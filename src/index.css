@@ -12,3 +12,40 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.count_down_button {
+    margin: 5px;
+    padding: 10px 30px;
+    width: 100px;
+}
+
+.card.text-center {
+    margin-top: 40px;
+}
+
+input.form-control.time_input {
+    margin-left: 180px;
+}
+
+.time_input_button {
+    margin-top: 1px;
+}
+
+h5.card-title {
+    font-size: 36px;
+}
+
+header.App-header {
+    font-size: 150px;
+    font-weight: lighter;
+}
+
+i.timer_icon {
+	bottom: 35px;
+    font-size: 40px;
+    position: relative;
+}
+
+p.card-text {
+    font-size: 29px;
+}
