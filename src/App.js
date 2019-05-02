@@ -7,8 +7,10 @@ import TimerNotification from './components/TimerNotification';
 
 export default class App extends React.Component {
 
+	
 	constructor(props) {
 		super(props);
+
 		this.state = {
 			count: 0,
 			status: "",
@@ -16,10 +18,8 @@ export default class App extends React.Component {
 			countdownStatus: 'stopped',
 			speed: 1000
 		}
-	}
+		this.timer_input = React.createRef();
 
-	componentWillMount(){
-		// this.start(3)
 	}
 
 	start = (second) => {
@@ -48,19 +48,37 @@ export default class App extends React.Component {
 					count:0,
 					status: "Time’s up!"
 				});
-				this.stop()
+				this.stop('stopped')
 			}
 		}, this.state.speed);
 	}
 
-	paused = () => {
+
+	paused = (status) => {
+
+		console.log(this.state.count)
+
+		this.setState({
+			countdownStatus: status
+		})
+
 		clearInterval(this.timer);
 		this.timer=undefined;
 	}
 
-	stop = () => {
+	stop = (status) => {
+
+		this.setState({
+			countdownStatus: status,
+			count: 0,
+			second: 0
+		})
+
 	    clearInterval(this.timer);
 		this.timer=undefined;
+
+
+		this.timer_input.current.value = ""
 	}
 
 	speedUp = (speed) => {
@@ -74,31 +92,60 @@ export default class App extends React.Component {
 		this.start(this.state.count)
 	}
 
+	changeStatus = (status) => {
+
+		if (status == "play") {
+
+			if (this.timer_input.current.value == "" || this.timer_input.current.value == null) {
+				alert('please enter a value')
+			}
+			else{
+
+				var count = this.timer_input.current.value
+				
+				this.setState({
+					countdownStatus: status,
+					count: this.timer_input.current.value
+				})
+
+				this.start(this.timer_input.current.value)
+
+			}
+		}
+		if (status == "stopped") {
+			this.stop(status);
+		}
+		if (status == "paused") {
+			this.paused(status)
+		}
+
+		console.log(status)
+	}
+
 	render(){
 		return (
 			<div>
-
-				<nav class="navbar navbar-light bg-light">
-				  <a class="navbar-brand" href="#">
-				    <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="" />
+				<nav className="navbar navbar-light bg-light">
+				  <a className="navbar-brand" href="#">
+				    <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" className="d-inline-block align-top" alt="" />
 				    Bootstrap
 				  </a>
 				</nav>
 
 				<div className="container col-5">
 
-					<div class="card text-center">
-						<div class="card-header">
-							<CountDownForm startTimer={this.start} />
+					<div className="card text-center">
+						<div className="card-header">
+							<CountDownForm ref={this.timer_input} changeStatus={this.changeStatus} countdownStatus={this.state.countdownStatus} />
 						</div>
 
-						<div class="card-body">
-							<h5 class="card-title">Count Down Timer</h5>
-							<CountDown sec={this.state.count} pausedTimer={this.paused} />
+						<div className="card-body">
+							<h5 className="card-title">Count Down Timer</h5>
+							<CountDown sec={this.state.count} changeStatus={this.changeStatus} countdownStatus={this.state.countdownStatus}/>
 							<TimerNotification status={this.state.status} />
 						</div>
 						
-						<div class="card-footer text-muted">
+						<div className="card-footer text-muted">
 							<SpeedControl speedUp={this.speedUp} />
 						</div>
 					</div>
@@ -107,7 +154,4 @@ export default class App extends React.Component {
 			</div>
 		)
 	}
-
-
-
 }
