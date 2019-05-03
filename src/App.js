@@ -23,12 +23,7 @@ export default class App extends React.Component {
 		this.timer_input = React.createRef();
 	}
 
-	start = (second) => {
-
-		this.setState({
-			count: second,
-			second,
-		})
+	start = () => {
 
 		this.timer = setInterval(() => {
 
@@ -77,11 +72,9 @@ export default class App extends React.Component {
 		this.timer=undefined;
 	}
 
-
 	componentWillReceiveProps(nextProps){
 		console.log(nextProps)
 	}
-
 
 	stop = (status) => {
 
@@ -107,22 +100,33 @@ export default class App extends React.Component {
 	}
 
 	changeStatus = (status) => {
-
+		
 		var count = (this.timer_input.current.value) ? this.timer_input.current.value : 0; 
 
-		if (status === "play") {
+		if (status === "start") {
 			
 			if (!count >  0) {
 				alert('please enter a value')
 			}
 			else{
+
 				this.setState({
-					countdownStatus: status,
+					countdownStatus: "play",
+					second: count,
+					count,
 				})
 
-				this.start(count)
+				this.start()
 			}
 		}
+
+		if (status === "play") {
+			this.start()
+			this.setState({
+				countdownStatus: "play"
+			})
+		}
+
 		if (status === "stopped") {
 			this.stop(status);
 		}

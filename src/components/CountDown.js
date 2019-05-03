@@ -22,10 +22,10 @@ export default ({sec, changeStatus, countdownStatus}) => {
 	}
 
 	function changeIconState() {
-		if (countdownStatus == "play") {
+		if (countdownStatus === "play") {
 			return <i onClick={() => {changeStatus('paused')}} className="far timer_icon fa-pause-circle"></i>	
 		}
-		if (countdownStatus == "paused") {
+		if (countdownStatus === "paused") {
 			return <i onClick={()=>{changeStatus('play')}} className="far timer_icon fa-play-circle"></i>	
 		}
 	}
