@@ -8,11 +8,11 @@ export default React.forwardRef(({changeStatus, countdownStatus}, ref) =>  {
 		}
 
 		if (countdownStatus === 'play') {
-			return <button onClick={() => {changeStatus('stopped')}} type="button" className="btn btn-primary time_input_button">STOP</button>
+			return <button onClick={() => {changeStatus('stopped')}} type="button" className="btn btn-danger time_input_button">STOP</button>
 		}		
 
 		if (countdownStatus === "paused") {
-			return <button onClick={() => {changeStatus('stopped')}} type="button" className="btn btn-primary time_input_button">STOP</button>
+			return <button onClick={() => {changeStatus('stopped')}} type="button" className="btn btn-danger time_input_button">STOP</button>
 		}		
 	}
 

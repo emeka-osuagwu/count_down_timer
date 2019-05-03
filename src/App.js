@@ -5,8 +5,6 @@ import SpeedControl from './components/SpeedControl';
 import CountDownForm from './components/CountDownForm';
 import TimerNotification from './components/TimerNotification';
 
-
-
 export default class App extends React.Component {
 
 	constructor(props) {
@@ -100,7 +98,7 @@ export default class App extends React.Component {
 	}
 
 	changeStatus = (status) => {
-		
+
 		var count = (this.timer_input.current.value) ? this.timer_input.current.value : 0; 
 
 		if (status === "start") {
@@ -140,8 +138,8 @@ export default class App extends React.Component {
 			<div>
 				<nav className="navbar navbar-light bg-light">
 				  <a className="navbar-brand" href="#">
-				    <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" className="d-inline-block align-top" alt="" />
-				    Bootstrap
+				    <img src="https://previews.123rf.com/images/urfandadashov/urfandadashov1808/urfandadashov180816788/107604672-timer-vector-icon-isolated-on-transparent-background-timer-logo-concept.jpg" width="30" height="30" className="d-inline-block align-top" alt="" />
+				    Timer
 				  </a>
 				</nav>
 
