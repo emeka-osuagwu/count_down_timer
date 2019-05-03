@@ -19,5 +19,5 @@ it('should show p tag',()=>{
 
 it('should show p tag',()=>{
 	wrapper.setProps({status: "custom text will show"})
-	expect(wrapper.fid('p').text()).toEqual('custom text will show');
+	expect(wrapper.find('p').text()).toEqual('custom text will show');
 });

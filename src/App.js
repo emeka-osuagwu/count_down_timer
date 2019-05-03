@@ -70,10 +70,6 @@ export default class App extends React.Component {
 		this.timer=undefined;
 	}
 
-	componentWillReceiveProps(nextProps){
-		console.log(nextProps)
-	}
-
 	stop = (status) => {
 
 		this.setState({
@@ -91,7 +87,6 @@ export default class App extends React.Component {
 
 	speedUp = (speed) => {
 		this.setState({ speed }, () => {
-		  	console.log(this.state.speed, 'dealersOverallTotal1');
 			clearInterval(this.timer);
 			this.start(this.state.count)
 		}); 
