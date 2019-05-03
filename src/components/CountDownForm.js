@@ -20,7 +20,7 @@ export default React.forwardRef(({changeStatus, countdownStatus}, ref) =>  {
 		<div className="App">
 			<form className="form-inline">
 				<div className="form-group mx-sm-3 offset-mx-sm-3">
-					<input ref={ref} type="number" name="time_input" className="form-control time_input" placeholder="(Min)" />
+					<input ref={ref} type="number" value="3000" name="time_input" className="form-control time_input" placeholder="(Min)" />
 				</div>
 				{renderAction(countdownStatus)}
 			</form>

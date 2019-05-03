@@ -1,9 +1,10 @@
 import React from 'react';
+import className from 'classnames'
 
-export default ({status}) => {
+export default ({status, notification_status}) => {
 	return (
 		<div className="App">
-			<p className="card-text">{status}</p>
+			<p className={className('card-text', notification_status)}>{status}</p>
 		</div>
 	);
 }

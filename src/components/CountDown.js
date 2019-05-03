@@ -5,10 +5,10 @@ export default ({sec, changeStatus, countdownStatus}) => {
 
 	function formatSeconds(totalSeconds){
 			
-		var seconds=totalSeconds % 60;
-		
+		var seconds = totalSeconds % 60;
+	
 		var minute= Math.floor(totalSeconds /60);
-		
+
 		if(seconds < 10)
 		{
 			seconds='0' + seconds;
@@ -17,6 +17,7 @@ export default ({sec, changeStatus, countdownStatus}) => {
 		{
 			minute='0' + minute;
 		}
+
 		return minute +':'+ seconds;
 	}
 
