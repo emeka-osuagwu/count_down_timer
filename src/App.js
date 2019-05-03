@@ -7,19 +7,18 @@ import TimerNotification from './components/TimerNotification';
 
 export default class App extends React.Component {
 
-	
 	constructor(props) {
 		super(props);
 
 		this.state = {
 			count: 0,
+			counter: "",
 			status: "",
 			second: 0,
 			countdownStatus: 'stopped',
 			speed: 1000
 		}
 		this.timer_input = React.createRef();
-
 	}
 
 	start = (second) => {
@@ -53,11 +52,8 @@ export default class App extends React.Component {
 		}, this.state.speed);
 	}
 
-
 	paused = (status) => {
-
-		console.log(this.state.count)
-
+		
 		this.setState({
 			countdownStatus: status
 		})
@@ -94,22 +90,19 @@ export default class App extends React.Component {
 
 	changeStatus = (status) => {
 
-		if (status == "play") {
+		var count = (this.timer_input.current.value) ? this.timer_input.current.value : 0; 
 
-			if (this.timer_input.current.value == "" || this.timer_input.current.value == null) {
+		if (status == "play") {
+			
+			if (!count >  0) {
 				alert('please enter a value')
 			}
 			else{
-
-				var count = this.timer_input.current.value
-				
 				this.setState({
 					countdownStatus: status,
-					count: this.timer_input.current.value
 				})
 
-				this.start(this.timer_input.current.value)
-
+				this.start(count)
 			}
 		}
 		if (status == "stopped") {
@@ -118,8 +111,6 @@ export default class App extends React.Component {
 		if (status == "paused") {
 			this.paused(status)
 		}
-
-		console.log(status)
 	}
 
 	render(){
