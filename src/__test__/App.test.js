@@ -28,6 +28,19 @@ it('should show error when value not passed', () => {
 	expect(window.alert).toHaveBeenCalledWith('please enter a value')
 });
 
+it('should update count with time value is passed', () => {
+	spyOn(instance, 'start').and.callThrough();
+	expect(instance.start(100));
+	expect(wrapper.state().count).toEqual(100)
+});
+
+it('should update count with time value is passed', () => {
+	spyOn(instance, 'start').and.callThrough();
+	expect(instance.start(100));
+	expect(wrapper.state().count).toEqual(100)
+});
+
+
 it('should stop when stopped value is passed', () => {
 	spyOn(instance, 'changeStatus').and.callThrough();
 	expect(instance.changeStatus('stopped'));
@@ -39,6 +52,5 @@ it('should paused when paused value is passed', () => {
 	expect(instance.changeStatus('paused'));
 	expect(wrapper.state().countdownStatus).toEqual('paused')
 });
-
 
 

@@ -12,7 +12,6 @@ export default class App extends React.Component {
 
 		this.state = {
 			count: 0,
-			counter: "",
 			status: "",
 			second: 0,
 			countdownStatus: 'stopped',
@@ -53,7 +52,7 @@ export default class App extends React.Component {
 	}
 
 	paused = (status) => {
-		
+
 		this.setState({
 			countdownStatus: status
 		})

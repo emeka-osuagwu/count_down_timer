@@ -1,15 +1,5 @@
 import React from 'react';
 import classNames from 'classnames';
-
-
-// const changeIconState = function(changeStatus, countdownStatus){
-// 	if (countdownStatus == "play") {
-// 		<i onClick={()=>{changeStatus('paused')}} className="far timer_icon fa-pause-circle"></i>	
-// 	}
-// 	if (countdownStatus == "paused") {
-// 		<i onClick={()=>{changeStatus('play')}} className="far timer_icon fa-play-circle"></i>	
-// 	}
-// }
 	
 export default ({sec, changeStatus, countdownStatus}) => {
 
